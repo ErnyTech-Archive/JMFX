@@ -11,14 +11,12 @@ public class JmfxWaitClose {
     }
 
     public void close(Task task) {
-        new Thread(() -> {
-            while (true) {
-                if (task.getProgress() == 1) {
-                    stageClose();
-                    break;
-                }
+        while (true) {
+            if (task.getProgress() == 1) {
+                stageClose();
+                break;
             }
-        }).start();
+        }
     }
 
     private void stageClose() {
